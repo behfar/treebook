@@ -1,4 +1,8 @@
 class StatusesController < ApplicationController
+
+  # For devise and Rails 4
+  before_action :authenticate_user!
+
   before_action :set_status, only: [:show, :edit, :update, :destroy]
 
   # GET /statuses
