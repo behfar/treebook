@@ -4,9 +4,10 @@
 
 <%= link_to "Post a new status...", new_status_path, class: "btn btn-default" %>
 
+<!-- Sort by most recent -->
 <% @statuses.reverse.each do |status| %>
   <div class="status">
-    <strong><%= status.name + " " %></strong>
+    <strong><%= status.user.full_name %></strong>
     <%= status.content %>
     <div class="meta">
       <%= link_to time_ago_in_words(status.created_at) + " ago", status %>
