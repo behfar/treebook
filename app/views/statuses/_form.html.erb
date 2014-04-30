@@ -1,4 +1,4 @@
-<!-- This form-horizontal is not working, but leaving in here: ", :html => {:class => 'form-horizontal' }" -->
+<!-- The "form-horizontal" parameter is not working w Bootstrap 3, so leaving in here: ", :html => {:class => 'form-horizontal' }" -->
 <%= simple_form_for(@status, :html => {:class => 'form-horizontal' }) do |f| %>
   <% if @status.errors.any? %>
     <div id="error_explanation">
