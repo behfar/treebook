@@ -10,8 +10,8 @@
 # two: {}
 #  column: value
 
-behfar:
-  first_name: "Behfar"
-  last_name: "Bastani"
-  email: "themfu@gmail.com"
-  profile_name: "BB"
+test_user:
+  first_name: "John"
+  last_name: "Doe"
+  email: "john@doe.com"
+  profile_name: "JD"
