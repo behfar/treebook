@@ -29,13 +29,13 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "a user should enter a profile name" do
-  	user = User.new
+  	user = User.new(first_name: "John", last_name: "Doe", email: "john@doe.com")
   	assert !user.save
   	assert !user.errors[:profile_name].empty?
   end
 
   test "a user should enter a unique profile name" do
-  	user = User.new
+  	user = User.new(first_name: "John", last_name: "Doe", email: "john@doe.com")
   	user.profile_name = users(:test_user).profile_name
 
   	assert !user.save
@@ -43,8 +43,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "a user should enter a profile name without spaces" do
-  	user = User.new
-  	user.profile_name = "Test profile name with spaces"
+  	user = User.new(first_name: "John", last_name: "Doe", email: "john@doe.com", profile_name: "Test profile name with spaces")
 
   	assert !user.save
   	assert !user.errors[:profile_name].empty?
