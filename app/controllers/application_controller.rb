@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:password) { |u| u.permit(:email) }
   end
 
-  # For devise and Rails 4
-  before_action :authenticate_user!
+  # For devise and Rails 4 - Turns out we didn't need it in here, since not all pages require login.
+  # before_action :authenticate_user!
 
 end

@@ -15,3 +15,9 @@ test_user:
   last_name: "Doe"
   email: "john@doe.com"
   profile_name: "JD"
+
+test_user2:
+  first_name: "John2"
+  last_name: "Doe2"
+  email: "john2@doe2.com"
+  profile_name: "JD2"

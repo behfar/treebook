@@ -1,9 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  content: "Test content"
+test_status1:
+  content: "Test content1"
   user: test_user
 
-two:
-  content: "Test content"
+test_status2:
+  content: "Test content2"
   user: test_user
+
+test_status3:
+  content: "Test content3"
+  user: test_user2
+
+test_status4:
+  content: "Test content4"
+  user: test_user2

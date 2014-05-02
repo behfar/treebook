@@ -3,6 +3,7 @@ class StatusesController < ApplicationController
   # For devise and Rails 4
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
+  # Looks like this line makes sure we fetch the status referred to by :id (which is a number in the URL)
   before_action :set_status, only: [:show, :edit, :update, :destroy]
 
   # GET /statuses
@@ -32,9 +33,11 @@ class StatusesController < ApplicationController
 
     respond_to do |format|
       if @status.save
+        puts "**** Create IF clause: %s ****\n" % [ @status.inspect ]
         format.html { redirect_to @status, notice: 'Status was successfully created.' }
         format.json { render action: 'show', status: :created, location: @status }
       else
+        puts "**** Create ELSE clause: %s ****\n" % [ @status.inspect ]
         format.html { render action: 'new' }
         format.json { render json: @status.errors, status: :unprocessable_entity }
       end

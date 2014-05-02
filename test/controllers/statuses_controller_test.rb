@@ -2,7 +2,7 @@ require 'test_helper'
 
 class StatusesControllerTest < ActionController::TestCase
   setup do
-    @status = statuses(:one)
+    @status = statuses(:test_status1)
   end
 
   test "should get index" do
@@ -31,7 +31,7 @@ class StatusesControllerTest < ActionController::TestCase
 
   test "should render the status page when logged in" do
     sign_in users(:test_user)
-    post :create, status: { content: "Test content" }
+    post :create, status: { content: "Test content35" }
     assert_response :redirect
     assert_redirected_to status_path(assigns(:status))
   end
