@@ -4,7 +4,12 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.2'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use sqlite3 for dev/test only, let Heroku deal w db for production
+group :development, :test do
+	gem 'sqlite3'
+end
+
+# Use devise for authentication and simple_form for forms
 gem 'devise'
 gem 'simple_form'
 
