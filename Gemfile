@@ -8,6 +8,11 @@ gem 'rails', '4.0.2'
 group :development, :test do
 	gem 'sqlite3'
 end
+# Use postgress for production on Heroku
+group :production do
+	gem 'pg'
+	# gem 'rails12factor'
+end
 
 # Use devise for authentication and simple_form for forms
 gem 'devise'
