@@ -15,6 +15,11 @@ group :production do
 	gem 'rails_12factor'
 end
 
+# Use shoulda for testing
+group :test do
+	gem 'shoulda'
+end
+
 # Use devise for authentication and simple_form for forms
 gem 'devise'
 gem 'simple_form'
