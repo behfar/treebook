@@ -92,6 +92,7 @@ class StatusesControllerTest < ActionController::TestCase
     assert_equal assigns(:status).user_id, users(:test_user).id
   end
 
+  # since status: is a required param, this test is meaningless
   test "should not update status if nothing has changed" do
     sign_in users(:test_user)
     patch :update, id: @status, status: { content: @status.content, user_id: users(:test_user).id }
