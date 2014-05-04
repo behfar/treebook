@@ -19,7 +19,7 @@ class StatusesController < ApplicationController
 
   # GET /statuses/new
   def new
-    @status = Status.new
+    @status = Status.new()
   end
 
   # GET /statuses/1/edit
@@ -29,7 +29,8 @@ class StatusesController < ApplicationController
   # POST /statuses
   # POST /statuses.json
   def create
-    @status = Status.new(status_params)
+    # What if .save fails? Does the new status get deallocated or will it stay in the statuses list until destroyed?
+    @status = current_user.statuses.new(status_params)
 
     respond_to do |format|
       if @status.save
@@ -45,6 +46,21 @@ class StatusesController < ApplicationController
   # PATCH/PUT /statuses/1
   # PATCH/PUT /statuses/1.json
   def update
+    # find the status within current user's scope
+    @status = current_user.statuses.find(params[:id])
+
+    # :status is a required in params (see status_params below), so we'd get an exception prior to this block
+    if !params[:status]
+      respond_to do |format|
+        format.html { redirect_to @status, notice: 'Nothing to update.' }
+        format.json { head :no_content }
+        return
+      end
+    end
+
+    # filter out any potentially malicious user_id injected into our status parameters
+    params[:status].delete(:user_id) if params[:status].has_key?(:user_id)
+
     respond_to do |format|
       if @status.update(status_params)
         format.html { redirect_to @status, notice: 'Status was successfully updated.' }
@@ -75,5 +91,6 @@ class StatusesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def status_params
       params.require(:status).permit(:first_name, :last_name, :user_id, :content)
+      # params.permit(status: [:content, :user_id])[:status]
     end
 end
