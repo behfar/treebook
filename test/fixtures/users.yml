@@ -21,3 +21,9 @@ test_user2:
   last_name: "Doe2"
   email: "john2@doe2.com"
   profile_name: "JD2"
+
+mike:
+  first_name: "Mike"
+  last_name: "The Frong"
+  email: "mike@thefrong.com"
+  profile_name: "MTF"
